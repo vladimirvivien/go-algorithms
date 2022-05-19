@@ -11,4 +11,21 @@ func TestBinSearch(t *testing.T) {
 	if index != 2 {
 		t.Fatal("expected value not found")
 	}
+
+	tests := []struct {
+		index int
+		value int
+	}{
+		{0, 2},
+		{5, 13},
+		{15, 53},
+		{-1, 2000},
+	}
+
+	for _, test := range tests {
+		index := BinSearch(data, test.value)
+		if index != test.index {
+			t.Errorf("exepecting index %d, got %d", test.index, index)
+		}
+	}
 }
